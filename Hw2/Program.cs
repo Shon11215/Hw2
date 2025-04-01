@@ -11,6 +11,7 @@ namespace Hw2
         static void Main(string[] args) {
             ClothingItem[] clothes = new ClothingItem[200];
             uint _uint = 1000;
+            int item_index = 0;
             string index = null;
             do {
                 Console.WriteLine("Hey what do you want to do?\n\na - Add a new Clothing Item\nb - See all your wardrobe\nc - Exit\n");
@@ -18,7 +19,8 @@ namespace Hw2
                 index = Console.ReadLine();
                 switch (index.ToLower()) {
                     case "a":
-                        initCloathingItem();
+                        if (item_index < clothes.Length) clothes[item_index] = initCloathingItem(_uint);
+                        else Console.WriteLine("sorry we are full of items");
                         break;
                     case "b":
                         break;
@@ -32,7 +34,7 @@ namespace Hw2
             } while (index.ToLower() != "c");
         }
 
-        static void initCloathingItem() {
+        static ClothingItem initCloathingItem(uint _uint) {
             string[] season_list = new string[4] { "summer", "spring", "winter", "fall" };
             string[] seasons_to_pass = new string[4];
             int[] season_index = new int[4];
@@ -65,7 +67,7 @@ namespace Hw2
                     continue;
                 }
                 season_index[i] = curr_season;
-                seasons_to_pass[i] = season_list[curr_season];
+                seasons_to_pass[i] = season_list[curr_season - 1];
             }
             Console.Write("\nPlease enter True or Flase for wether the item is favorite or not: ");
             string is_favorite = (Console.ReadLine());
@@ -74,6 +76,11 @@ namespace Hw2
             Console.Write("\nPlease enter the brand name: ");
             string brand = (Console.ReadLine());
 
+            Console.Write("\nPlease enter the brand name: ");
+            string size = (Console.ReadLine());
+
+            ClothingItem item = new ClothingItem(_uint++, color, name, seasons_to_pass,is_favorite,usage_status,type,brand,cost,size);
+            return item;
         }
     }
 }

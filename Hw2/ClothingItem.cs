@@ -14,7 +14,7 @@ namespace Hw2
         string name, color, size, type, brand;
         bool is_favorite, is_casual;
 
-        public ClothingItem(uint _uint, string color, string name, string[] seasson, string is_favorite, int usage_status, string type, string brand, int cost) : this(name, null) {
+        public ClothingItem(uint _uint, string color, string name, string[] seasson, string is_favorite, int usage_status, string type, string brand, int cost,string size){
             SetCost(cost);
             UsageStatus(usage_status);
             SetColor(color);
@@ -24,7 +24,7 @@ namespace Hw2
             if (is_favorite.ToLower() == "yes" || is_favorite.ToLower() == "true" || is_favorite == "1") {
                 this.is_favorite = true;
             }
-
+            this.name = name;
             this.brand = brand;
             this.type = type;
 
