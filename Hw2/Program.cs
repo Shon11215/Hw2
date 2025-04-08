@@ -6,11 +6,28 @@ using System.Threading.Tasks;
 
 namespace Hw2
 {
+    enum Sizes
+    { 
+      S=1,M,L,XL,XXL,OS
+    }
+    enum Usage
+    {
+        NotInUse=1, InSomeUses, MostlyUsed
+    }
     internal class Program
     {
         static void Main(string[] args) {
-            ClothingItem[] clothes = new ClothingItem[200];
-            uint _uint = 1000;
+            User[] users = new User[]{
+             new User("123456789", "user1@example.com", "Pass123", "John",
+             "Doe", "Johnny", "123-456-7890", new DateTime(1990, 5, 12)),
+
+             new User("987654321", "user2@example.com", "Secure456", "Jane",
+             "Smith", "Janie", "987-654-3210", new DateTime(1985, 8, 25)),
+
+             new User("951753852", "user3@example.com", "Strong789", "Alex",
+             "Brown", "Al", "555-666-7777", new DateTime(1998, 12, 3))};
+
+            ClothingItem[] clothes = new ClothingItem[0];
             int item_index = 0;
             string index = null;
             do {
@@ -19,9 +36,8 @@ namespace Hw2
                 index = Console.ReadLine();
                 switch (index.ToLower()) {
                     case "a":
-                        if (item_index < clothes.Length) clothes[item_index] = initCloathingItem(ref _uint);
-                        else Console.WriteLine("sorry we are full of items");
-                        item_index++;
+                        Array.Resize(ref clothes, item_index+1);
+                        clothes[item_index++] = initCloathingItem();
                         break;
                     case "b":
                         for (int i = 0; i < item_index; i++) {
@@ -38,9 +54,11 @@ namespace Hw2
             } while (index.ToLower() != "c");
         }
 
-        static ClothingItem initCloathingItem(ref uint _uint) {
+        static ClothingItem initCloathingItem() {
             string[] season_list = new string[4] { "summer", "spring", "winter", "fall" };
             int season_counter;
+            Console.WriteLine("\nPlease enter the user ID: ");
+            string user_id = Console.ReadLine();
 
             Console.Write("Please enter the name of the item: ");
             string name = Console.ReadLine();
@@ -85,9 +103,9 @@ namespace Hw2
             string is_casual = (Console.ReadLine());
 
             Console.Write("\nPlease enter the size (S,M,L,etc..): ");
-            string size = (Console.ReadLine());
+            int size = int.Parse((Console.ReadLine()));
 
-            ClothingItem item = new ClothingItem(_uint++, color, name, seasons_to_pass,is_favorite,usage_status,type,brand,cost,size,is_casual);
+            ClothingItem item = new ClothingItem(user_id ,color, name, seasons_to_pass,is_favorite,usage_status,type,brand,cost,size,is_casual);
             return item;
         }
     }
