@@ -10,11 +10,11 @@ namespace Hw2
     {
         uint _uint;
         int cost, usage_status;
-        string[] seasons = new string[4];
+        string[] seasons;
         string name, color, size, type, brand;
         bool is_favorite, is_casual;
 
-        public ClothingItem(uint _uint, string color, string name, string[] seasson, string is_favorite, int usage_status, string type, string brand, int cost,string size){
+        public ClothingItem(uint _uint, string color, string name, string[] seasson, string is_favorite, int usage_status, string type, string brand, int cost,string size,string is_casual): this(name,is_casual){
             SetCost(cost);
             UsageStatus(usage_status);
             SetColor(color);
@@ -24,10 +24,10 @@ namespace Hw2
             if (is_favorite.ToLower() == "yes" || is_favorite.ToLower() == "true" || is_favorite == "1") {
                 this.is_favorite = true;
             }
-            this.name = name;
+            //this.name = name;
             this.brand = brand;
             this.type = type;
-
+            //SetIsCasual(is_casual);
 
         }
 
@@ -37,8 +37,11 @@ namespace Hw2
             SetIsCasual(is_casual);
         }
         public void Print() {
-            Console.WriteLine($"The name of the item is: {this.name}\nColor: {this.color}\nSeason: \nFavorite?: {this.is_favorite}");
+            Console.WriteLine($"The name of the item is: {this.name}\nThe items unit number: {this._uint} \nColor: {this.color}\nFavorite?: {this.is_favorite}");
             Console.WriteLine($"Usage Status: {this.usage_status}\nType: {this.type}\nBrand: {this.brand}\nCost: {this.cost}\nCasual?: {this.is_casual}");
+            Console.WriteLine($"The seasons the items fits for: {string.Join(", ", seasons)}");
+            Console.WriteLine($"The size of the item: {this.size}");
+            Console.WriteLine($"Is the item Casual? - {this.is_casual}\n\n");
         }
 
         public void SetCost(int cost) {
@@ -76,11 +79,9 @@ namespace Hw2
             }
 
         }
-
-
         static bool IsValidColor(string color) {
             for (int i = 1; i < color.Length; i++) {
-                if (!char.IsDigit(color[i]) && (color[i] < 'a' || color[i] > 'f')) return false;
+                if (!char.IsDigit(color[i]) && (color[i] < 'a' || color[i] > 'f') && (color[i] < 'A' || color[i] > 'F')) return false;
             }
             return true;
         }
