@@ -67,8 +67,6 @@ namespace Hw2
             Console.WriteLine($"• Size:            {this.Size}");
             Console.WriteLine($"• Casual:          {(this.is_casual ? "Yes" : "No")}");
             Console.WriteLine($"• Seasons:         {string.Join(", ", seasons)}\n");
-
-
         }
 
 
