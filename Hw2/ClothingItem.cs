@@ -7,20 +7,26 @@ using System.Threading.Tasks;
 
 namespace Hw2
 {
-
+    enum Sizes
+    {
+        S = 1, M, L, XL, XXL, OS
+    }
+    enum Usage
+    {
+        NotInUse = 1, InSomeUses, MostlyUsed
+    }
     internal class ClothingItem
     {
         Usage usage;
         Sizes _size;
-        uint _uint;
         int cost, usagestatus;
         string[] seasons;
-        string user_id ,name, color, type, brand;
+        string user_id, name, color, type, brand;
         bool is_favorite, is_casual;
         private static uint item_id = 1000;
 
 
-        public ClothingItem(string user_id,string color, string name, string[] seasson, string is_favorite, int usage, string type, string brand, int cost, int _size, string is_casual) : this(name, is_casual)
+        public ClothingItem(string user_id, string color, string name, string[] seasson, string is_favorite, int usage, string type, string brand, int cost, int _size, string is_casual) : this(name, is_casual)
         {
             this.user_id = user_id;
             this.Cost = cost;
@@ -47,11 +53,14 @@ namespace Hw2
         }
         public void Print()
         {
-            Console.WriteLine($"The user ID is : {this.user_id}\nThe name of the item is: {this.name}\nThe items unit number: {this._uint} \nColor: {this.Color}\nFavorite?: {this.is_favorite}");
+            Console.WriteLine("-------------------------");
+            Console.WriteLine($"The user ID is : {this.user_id}\nThe name of the item is: {this.name}\nColor: {this.Color}\nFavorite?: {this.is_favorite}");
             Console.WriteLine($"Usage Status: {this.Usage}\nType: {this.type}\nBrand: {this.brand}\nCost: {this.Cost}\nCasual?: {this.is_casual}");
             Console.WriteLine($"The seasons the items fits for: {string.Join(", ", seasons)}");
             Console.WriteLine($"The size of the item: {this.Size}");
-            Console.WriteLine($"Is the item Casual? - {this.is_casual}\n\n");
+            Console.WriteLine($"Is the item Casual? - {this.is_casual}");
+            Console.WriteLine("-------------------------\n");
+
         }
 
 
@@ -68,21 +77,24 @@ namespace Hw2
                 cost = value;
             }
         }
-        public string Color { get => color; set 
+        public string Color
+        {
+            get => color;
+            set
             {
                 while (true)
                 {
                     if (value[0] != '#')
                     {
-                        Console.WriteLine("please start the color with # : ");
+                        Console.WriteLine("Please start the color with # : ");
                     }
                     else if (value.Length != 7)
                     {
-                        Console.WriteLine("please enter a 7 digits : ");
+                        Console.WriteLine("For the color please enter a 7 digits : ");
                     }
                     else if (!IsValidColor((string)value))
                     {
-                        Console.WriteLine("Please enter only numbers or a-f chars");
+                        Console.WriteLine("For the color Please enter only numbers or a-f chars");
                     }
                     else
                     {
@@ -95,7 +107,9 @@ namespace Hw2
             }
         }
 
-        internal Usage Usage { get => usage;
+        internal Usage Usage
+        {
+            get => usage;
             set
             {
                 int num_value = (int)value;
@@ -108,14 +122,20 @@ namespace Hw2
             }
         }
 
-        internal Sizes Size { get => _size;
-            set => _size = value; 
+        internal Sizes Size
+        {
+            get => _size;
+            set => _size = value;
         }
-        public static uint Item_id {get => item_id;
+        public static uint Item_id
+        {
+            get => item_id;
             set => item_id = value;
         }
-        public string User_id { get => user_id;
-            set => user_id = value; 
+        public string User_id
+        {
+            get => user_id;
+            set => user_id = value;
         }
 
         static bool IsValidColor(string color)
