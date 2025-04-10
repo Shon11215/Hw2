@@ -53,13 +53,21 @@ namespace Hw2
         }
         public void Print()
         {
-            Console.WriteLine("-------------------------");
-            Console.WriteLine($"The user ID is : {this.user_id}\nThe name of the item is: {this.name}\nColor: {this.Color}\nFavorite?: {this.is_favorite}");
-            Console.WriteLine($"Usage Status: {this.Usage}\nType: {this.type}\nBrand: {this.brand}\nCost: {this.Cost}\nCasual?: {this.is_casual}");
-            Console.WriteLine($"The seasons the items fits for: {string.Join(", ", seasons)}");
-            Console.WriteLine($"The size of the item: {this.Size}");
-            Console.WriteLine($"Is the item Casual? - {this.is_casual}");
-            Console.WriteLine("-------------------------\n");
+            Console.WriteLine("╔══════════════════════════════════════╗");
+            Console.WriteLine($"║     Clothing Item Details ({this.name})       ║");
+            Console.WriteLine("╚══════════════════════════════════════╝");
+            Console.WriteLine($"• User ID:         {this.user_id}");
+            Console.WriteLine($"• Name:            {this.name}");
+            Console.WriteLine($"• Color:           {this.Color}");
+            Console.WriteLine($"• Favorite:        {(this.is_favorite ? "Yes" : "No")}");
+            Console.WriteLine($"• Usage:           {this.Usage}");
+            Console.WriteLine($"• Type:            {this.type}");
+            Console.WriteLine($"• Brand:           {this.brand}");
+            Console.WriteLine($"• Cost:            {this.Cost}$");
+            Console.WriteLine($"• Size:            {this.Size}");
+            Console.WriteLine($"• Casual:          {(this.is_casual ? "Yes" : "No")}");
+            Console.WriteLine($"• Seasons:         {string.Join(", ", seasons)}\n");
+
 
         }
 

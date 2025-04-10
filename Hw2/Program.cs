@@ -11,7 +11,7 @@ namespace Hw2
         static void Main(string[] args)
         {
             User[] users = new User[]{
-             new User("123456789", "user1@example.com", "Pass123", "John",
+             new User("12", "1", "Pass123", "John",
              "Doe", "Johnny", "123-456-7890", new DateTime(1990, 5, 12)),
 
              new User("987654321", "user2@example.com", "Secure456", "Jane",
