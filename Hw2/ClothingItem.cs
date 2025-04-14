@@ -15,7 +15,6 @@ namespace Hw2
     {
         NotInUse = 1, InSomeUses, MostlyUsed
     }
-    //123
     internal class ClothingItem
     {
         Usage usage;
@@ -25,12 +24,11 @@ namespace Hw2
         string[] seasons;
         string user_id, name, color, type, brand;
         bool is_favorite, is_casual;
-        private static uint _idCounter= 1000;
-
+        static uint _idCounter= 1000;
 
         public ClothingItem(string user_id, string color, string name, string[] seasson, string is_favorite, int usage, string type, string brand, int cost, int _size, string is_casual) : this(name, is_casual)
         {
-            _uint = _idCounter++;
+            _uint = IdCounter++;
             this.user_id = user_id;
             this.Cost = cost;
             this.Usage = (Usage)usage;
@@ -142,6 +140,7 @@ namespace Hw2
             get => user_id;
             set => user_id = value;
         }
+        public static uint IdCounter { get => _idCounter; set => _idCounter=value; }
 
         static bool IsValidColor(string color)
         {
