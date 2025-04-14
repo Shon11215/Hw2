@@ -15,19 +15,22 @@ namespace Hw2
     {
         NotInUse = 1, InSomeUses, MostlyUsed
     }
+    //123
     internal class ClothingItem
     {
         Usage usage;
         Sizes _size;
-        int cost, usagestatus;
+        int cost;
+        uint _uint;
         string[] seasons;
         string user_id, name, color, type, brand;
         bool is_favorite, is_casual;
-        private static uint item_id = 1000;
+        private static uint _idCounter= 1000;
 
 
         public ClothingItem(string user_id, string color, string name, string[] seasson, string is_favorite, int usage, string type, string brand, int cost, int _size, string is_casual) : this(name, is_casual)
         {
+            _uint = _idCounter++;
             this.user_id = user_id;
             this.Cost = cost;
             this.Usage = (Usage)usage;
@@ -57,6 +60,7 @@ namespace Hw2
             Console.WriteLine($"║     Clothing Item Details ({this.name})       ║");
             Console.WriteLine("╚══════════════════════════════════════╝");
             Console.WriteLine($"• User ID:         {this.user_id}");
+            Console.WriteLine($"• Item ID:         {this._uint}");
             Console.WriteLine($"• Name:            {this.name}");
             Console.WriteLine($"• Color:           {this.Color}");
             Console.WriteLine($"• Favorite:        {(this.is_favorite ? "Yes" : "No")}");
@@ -132,11 +136,6 @@ namespace Hw2
         {
             get => _size;
             set => _size = value;
-        }
-        public static uint Item_id
-        {
-            get => item_id;
-            set => item_id = value;
         }
         public string User_id
         {
