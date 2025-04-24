@@ -98,6 +98,7 @@ namespace Hw2
             int cost = int.Parse(Console.ReadLine());
 
             //Checking amount of seasons
+
             do
             {
                 Console.Write("\nPlease enter the amount of seasons your item fits between 1-4: ");
